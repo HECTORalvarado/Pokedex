@@ -7,11 +7,16 @@ import { environment } from 'src/environments/environment';
 })
 export class PokemonService {
 
-  private url: string = `${environment.HOST}pokemon?limit=10`
+  private url: string = `${environment.HOST}pokemon`
 
   constructor(private http: HttpClient) { }
 
   getPokemons(){
-    return this.http.get(this.url)
+    return this.http.get(`${this.url}?limit=10`);
   }
+
+  getMorePokemons(name:string){
+    return this.http.get(`${this.url}/${name}`);
+  }
+
 }

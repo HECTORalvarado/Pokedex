@@ -1,1 +1,18 @@
-<p>pokemon works!</p>
+<div class="pokeGrid">
+	<div class="card" *ngFor="let pokemon of pokemons">
+		<h3>{{pokemon.name}}</h3>
+		<img [src]="pokemon.sprites.front_default" alt="{{pokemon.name}}">
+		<p>
+			<b>Tipo: </b><span>{{pokemon.types[0].type.name}}</span>
+		</p>
+		<p>
+			<b>Altura: </b><span>{{pokemon.height}} dm</span>
+		</p>
+		<p>
+			<b>Puntos de vida: </b><span>{{pokemon.stats[0].base_stat}}</span>
+		</p>
+		<p>
+			<b>Ataque: </b><span>{{pokemon.stats[1].base_stat}}</span>
+		</p>
+	</div>
+</div>
