@@ -12,7 +12,7 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   getPokemons(){
-    return this.http.get(`${this.url}?limit=10`);
+    return this.http.get(`${this.url}?limit=20`);
   }
 
   getMorePokemons(name:string){
