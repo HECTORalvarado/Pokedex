@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
   pokemons : any [] = [];
+  pageEvent: PageEvent;
   constructor(private pokeService: PokemonService) { }
 
   ngOnInit(): void {

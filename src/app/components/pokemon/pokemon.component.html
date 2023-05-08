@@ -1,6 +1,6 @@
 <div class="pokeGrid">
 	<div class="card" *ngFor="let pokemon of pokemons">
-		<h3>{{pokemon.name}}</h3>
+		<h3>{{pokemon.name | titlecase}}</h3>
 		<img [src]="pokemon.sprites.front_default" alt="{{pokemon.name}}">
 		<p>
 			<b>Tipo: </b><span>{{pokemon.types[0].type.name}}</span>
@@ -16,3 +16,11 @@
 		</p>
 	</div>
 </div>
+
+<mat-paginator class="paginator" 
+			  [length]="100"
+              [pageSize]="1"
+			  (page)="pageEvent = $event"
+              aria-label="Seleccionar pagina">
+</mat-paginator>
+
