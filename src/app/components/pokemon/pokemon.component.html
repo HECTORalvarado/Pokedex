@@ -20,7 +20,7 @@
 <mat-paginator class="paginator" 
 			  [length]="100"
               [pageSize]="1"
-			  (page)="pageEvent = $event"
+			  (page)="obtenerPokemons($event)"
               aria-label="Seleccionar pagina">
 </mat-paginator>
 

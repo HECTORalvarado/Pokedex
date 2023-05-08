@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -9,19 +9,33 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
   pokemons : any [] = [];
-  pageEvent: PageEvent;
   constructor(private pokeService: PokemonService) { }
 
   ngOnInit(): void {
-    this.pokeService.getPokemons().subscribe(
+    this.pokeService.getPokemons(1).subscribe(
       (response:any) => {
         //console.log(response);
         response.results.forEach(result => {
-          console.log(result.name);
           this.pokeService.getMorePokemons(result.name).subscribe(
             (uniqueResponse:any) => {
               this.pokemons.push(uniqueResponse);
-              console.log(this.pokemons);
+            }
+          );
+        });
+      }
+    );
+  }
+  
+  obtenerPokemons (event?:PageEvent) {
+    this.pokemons = [];
+    console.log(event.pageIndex + 1);
+    this.pokeService.getPokemons(event.pageIndex+1).subscribe(
+      (response:any) => {
+        //console.log(response);
+        response.results.forEach(result => {
+          this.pokeService.getMorePokemons(result.name).subscribe(
+            (uniqueResponse:any) => {
+              this.pokemons.push(uniqueResponse);
             }
           );
         });
