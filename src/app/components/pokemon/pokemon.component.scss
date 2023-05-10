@@ -1,5 +1,6 @@
 .pokeGrid {
 	display: grid;
+	margin-top: 70px;
 	padding: 20px;
 	gap: 16px;
 	grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
