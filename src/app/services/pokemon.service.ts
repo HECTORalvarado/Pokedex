@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class PokemonService {
 
+  name :string;
+
   private url: string = `${environment.HOST}pokemon`
 
   constructor(private http: HttpClient) { }
@@ -17,6 +19,10 @@ export class PokemonService {
   }
 
   getMorePokemons(name:string){
+    return this.http.get(`${this.url}/${name}`);
+  }
+
+  getPokemonByName(name: string){
     return this.http.get(`${this.url}/${name}`);
   }
 

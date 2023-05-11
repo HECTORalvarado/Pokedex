@@ -9,9 +9,16 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
   pokemons : any [] = [];
+  name = this.pokeService.name;
+  pokemonEncontrado : any;
   constructor(private pokeService: PokemonService) { }
 
   ngOnInit(): void {
+    this.getPokemons();
+  }
+
+  getPokemons () {
+    this.pokemons = [];
     this.pokeService.getPokemons(1).subscribe(
       (response:any) => {
         //console.log(response);
@@ -41,6 +48,22 @@ export class PokemonComponent implements OnInit {
         });
       }
     );
+  }
+
+  buscarPokemons(name:string) {
+    this.pokeService.getPokemonByName(name).subscribe(
+      (res:any) => {
+        this.pokemonEncontrado = res;
+      }
+      );
+      console.log(this.pokemonEncontrado);
+      if(this.pokemonEncontrado.name == name){
+      this.pokemons = [];
+      this.pokemons.push(this.pokemonEncontrado);
+    } else {
+      console.log('false');
+      this.getPokemons();
+    }
   }
 
 }
